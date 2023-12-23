@@ -28,3 +28,9 @@
  -Named export import
    -export const component;
    -import {Component} from path;
+
+ -React Hooks => Normal JS utility functions. 2 main type of hooks are:
+   -useState() creates superpowerful state variable in react
+   -useEffect()
+
+ -when a state variable updates react re-renders the component
