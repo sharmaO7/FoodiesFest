@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 import resList from "../utils/mockData";
 import axios from "axios";
 
@@ -8,7 +9,7 @@ const Body = () => {
   //state variable
   const [ListOfRestaurants, setListOfRestaurants] = useState([]);
 
-  const[filteredRestaurant,setfilteredRestaurant] = useState([]);
+  const [filteredRestaurant, setfilteredRestaurant] = useState([]);
 
   const [searchText, setsearchText] = useState("");
 
@@ -24,12 +25,12 @@ const Body = () => {
     // console.log(json.data.cards)
     // console.log(json.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants)
     const vai =
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     console.log(vai); //cards[0].card.card
 
     setListOfRestaurants(vai);
-    setfilteredRestaurant(vai); 
+    setfilteredRestaurant(vai);
   };
   //conditional rendering :
   if (ListOfRestaurants.length === 0) {
@@ -69,7 +70,7 @@ const Body = () => {
           <button
             onClick={() => {
               console.log(searchText);
-              const filteredRestaurant=ListOfRestaurants.filter((res) =>
+              const filteredRestaurant = ListOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
 
@@ -93,7 +94,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.id} resData={restaurant} />
+          <Link key={restaurant.id} to={"/restaurants/" + restaurant.id} >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

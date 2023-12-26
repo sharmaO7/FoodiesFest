@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    background-color: black;
+    /* background-color: black; */
 }
 .header{
     display: flex;
@@ -88,4 +88,8 @@ body{
 
 .filter{
     display: flex;
+}
+
+.menu{
+    margin: 20px;
 }
