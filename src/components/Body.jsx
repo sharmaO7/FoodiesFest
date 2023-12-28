@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import resList from "../utils/mockData";
 import axios from "axios";
 
@@ -25,7 +25,7 @@ const Body = () => {
     // console.log(json.data.cards)
     // console.log(json.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants)
     const vai =
-      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     console.log(vai); //cards[0].card.card
 
@@ -94,7 +94,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <Link key={restaurant.id} to={"/restaurants/" + restaurant.id} >
+          <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id} >
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}

@@ -22,7 +22,7 @@ const RestaurantMenu = () => {
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[0]?.card?.card?.info;
   const { itemCards } =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card;
   console.log(itemCards);
 
   return (
@@ -31,7 +31,7 @@ const RestaurantMenu = () => {
       <p>
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
-
+      <h2>Menu</h2>
       <ul>
         {itemCards.map((item) => (
           <li key={item.card.info.id}>
