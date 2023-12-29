@@ -1,7 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus.jsx";
 import resList from "../utils/mockData";
 import axios from "axios";
 
@@ -25,13 +26,22 @@ const Body = () => {
     // console.log(json.data.cards)
     // console.log(json.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants)
     const vai =
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     console.log(vai); //cards[0].card.card
 
     setListOfRestaurants(vai);
     setfilteredRestaurant(vai);
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you are offline!! Please check your internet connnection.
+      </h1>
+    );
   //conditional rendering :
   if (ListOfRestaurants.length === 0) {
     return <Shimmer />;
@@ -94,7 +104,10 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id} >
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}
