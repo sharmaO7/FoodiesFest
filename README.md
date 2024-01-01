@@ -38,3 +38,7 @@
  -2 types of routing in web apps are:
    -server side routing - making a network call, and that page is coming from server 
    -client side routing - network call is not made as all components are loaded in app (used in single page app)
+
+ -Props drilling
+
+ -React context-used to avoid props drilling
