@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class UserClass extends React.Component {
     constructor(props){
         super(props);
@@ -23,11 +24,11 @@ class UserClass extends React.Component {
     }
 
     componentDidUpdate(){
-        console.log("component did update called!");
+        // console.log("component did update called!");
     }
 
     componentWillUnmount(){
-        console.log("component will unmount called!");
+        // console.log("component will unmount called!");
     }
     
 

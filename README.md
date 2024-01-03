@@ -42,3 +42,11 @@
  -Props drilling
 
  -React context-used to avoid props drilling
+
+ # Redux Toolkit
+  -install @reduxjs/toolkit and react-redux
+  -build our store
+  -connect store to our app
+  -slice(cartSlice)
+  -dispatch action 
+  -Selector

@@ -63,7 +63,7 @@ const RestaurantMenu = () => {
           data={category?.card?.card}
 
           showItems={index===showIndex ? true : false}     //controlled component
-          setshowIndex={()=>setshowIndex(index)}
+          setshowIndex={()=>showIndex===index?setshowIndex(-1):setshowIndex(index)}
         />
       ))}
     </div>

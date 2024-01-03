@@ -1,11 +1,13 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.jsx";
 import resList from "../utils/mockData";
 import axios from "axios";
 import { withPromotedLabel } from "./RestaurantCard.jsx";
+import UserContext from "../utils/UserContext.jsx";
+
 
 const Body = () => {
   //state variable
@@ -29,7 +31,7 @@ const Body = () => {
     // console.log(json.data.cards)
     // console.log(json.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants)
     const vai =
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     console.log(vai); //cards[0].card.card
 
@@ -45,6 +47,9 @@ const Body = () => {
         Looks like you are offline!! Please check your internet connnection.
       </h1>
     );
+
+  const {loggedInUser, setUserName} = useContext(UserContext);
+
   //conditional rendering :
   if (ListOfRestaurants.length === 0) {
     return <Shimmer />;
@@ -70,7 +75,7 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter flex">
+      <div className="filter flex justify-center">
         <div className="search m-4 p-4">
           <input
             type="text"
@@ -107,8 +112,12 @@ const Body = () => {
             Top Rated Restaurant
           </button>
         </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label>Username:</label>
+          <input className="border border-black p-2" value={loggedInUser} onChange={(e)=>setUserName(e.target.value)} />
+        </div>
       </div>
-      <div className="res-container flex flex-wrap ">
+      <div className="res-container flex flex-wrap justify-center">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}
